@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyMover _enemyPrefab;
     [Space(10)]
-    [SerializeField] private List<Transform> _spawnPoints = new();
+    [SerializeField] private List<SpawnPoint> _spawnPoints = new();
     [SerializeField] private float _spawnDelay = 2.0f;
 
     private void Awake()
@@ -14,23 +14,22 @@ public class EnemySpawner : MonoBehaviour
         if (_spawnPoints.Count == 0)
             enabled = false;
 
-        StartCoroutine(Spawn());
+        StartCoroutine(SpawnCoroutine());
     }
 
-    private IEnumerator Spawn()
+    private IEnumerator SpawnCoroutine()
     {
         while (_spawnPoints.Count > 0)
         {
             yield return new WaitForSeconds(_spawnDelay);
 
             int randomIndex = Random.Range(0, _spawnPoints.Count);
-            Transform spawnPointTransform = _spawnPoints[randomIndex];
+            SpawnPoint spawnPoint = _spawnPoints[randomIndex];
 
-            if (spawnPointTransform == null)
+            if (spawnPoint == null)
                 continue;
 
-            EnemyMover enemy = Instantiate(_enemyPrefab, spawnPointTransform.position, Quaternion.identity);
-            enemy.Initialize(spawnPointTransform.forward);
+            spawnPoint.Spawn();
         }
     }
 }

@@ -9,12 +9,11 @@ public class EnemyMover : MonoBehaviour
 
     private CharacterController _characterController;
 
-    private Vector3 _direction;
+    private Transform _target;
 
-    public void Initialize(Vector3 direction)
+    public void Initialize(Transform target)
     {
-        transform.forward = direction;
-        _direction = direction;
+        _target = target;
     }
 
     private void Awake()
@@ -29,6 +28,12 @@ public class EnemyMover : MonoBehaviour
 
     private void Move()
     {
-        _characterController.Move(_direction * _speed * Time.deltaTime);
+        if (_target == null)
+            return;
+
+        Vector3 direction = (_target.position - transform.position).normalized;
+
+        _characterController.Move(direction * _speed * Time.deltaTime);
+        transform.forward = direction;
     }
 }
