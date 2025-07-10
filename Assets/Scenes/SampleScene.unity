@@ -364,8 +364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMover: {fileID: 47098936}
-  _startPointTransform: {fileID: 1877044587}
-  _endPointTransform: {fileID: 591258796}
+  _points:
+  - {fileID: 1877044587}
+  - {fileID: 591258796}
 --- !u!1 &178070510
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMover: {fileID: 1528302004}
-  _startPointTransform: {fileID: 750829313}
-  _endPointTransform: {fileID: 1219367235}
+  _points:
+  - {fileID: 750829313}
+  - {fileID: 1219367235}
 --- !u!1 &257973740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,8 +1356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMover: {fileID: 1387785920}
-  _startPointTransform: {fileID: 641553836}
-  _endPointTransform: {fileID: 944373054}
+  _points:
+  - {fileID: 641553836}
+  - {fileID: 944373054}
 --- !u!1 &1482592796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,8 +1389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMover: {fileID: 1866178148}
-  _startPointTransform: {fileID: 1760334898}
-  _endPointTransform: {fileID: 320128716}
+  _points:
+  - {fileID: 1760334898}
+  - {fileID: 320128716}
 --- !u!4 &1482592798
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,8 +1555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMover: {fileID: 14567754}
-  _startPointTransform: {fileID: 454071810}
-  _endPointTransform: {fileID: 838928383}
+  _points:
+  - {fileID: 454071810}
+  - {fileID: 838928383}
 --- !u!1 &1760334897
 GameObject:
   m_ObjectHideFlags: 0

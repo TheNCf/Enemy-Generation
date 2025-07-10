@@ -5,19 +5,14 @@ using UnityEngine;
 public class TargetNavigator : MonoBehaviour
 {
     [SerializeField] private TargetMover _targetMover;
-    [SerializeField] private Transform _startPointTransform;
-    [SerializeField] private Transform _endPointTransform;
+    [SerializeField] private List<Transform> _points;
 
-    private Transform _pointMovingToTransform;
-
-    private void Awake()
-    {
-        _pointMovingToTransform = _endPointTransform;
-    }
+    private int _currentPointIndex = 0;
+    private float _nearDistance = 0.1f;
 
     private void Start()
     {
-        _targetMover.SetDestination(_pointMovingToTransform.position);
+        _targetMover.SetDestination(_points[_currentPointIndex].position);
     }
 
     private void Update()
@@ -27,14 +22,12 @@ public class TargetNavigator : MonoBehaviour
 
     private void Work()
     {
-        if (Vector3.Distance(_pointMovingToTransform.position, _targetMover.transform.position) < 0.1f)
-        {
-            if (_pointMovingToTransform == _startPointTransform)
-                _pointMovingToTransform = _endPointTransform;
-            else
-                _pointMovingToTransform = _startPointTransform;
+        float sqrDistance = (_points[_currentPointIndex].position - _targetMover.transform.position).sqrMagnitude;
 
-            _targetMover.SetDestination(_pointMovingToTransform.position);
+        if (sqrDistance < _nearDistance)
+        {
+            _currentPointIndex = ++_currentPointIndex % _points.Count;
+            _targetMover.SetDestination(_points[_currentPointIndex].position);
         }
     }
 }
