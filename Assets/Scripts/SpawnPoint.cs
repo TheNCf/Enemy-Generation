@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] public EnemyMover _enemyPrefab;
-    [SerializeField] public Transform _targetTransform;
+    [SerializeField] private EnemyMover _enemyPrefab;
+    [SerializeField] private Transform _targetTransform;
 
     public void Spawn()
     {
